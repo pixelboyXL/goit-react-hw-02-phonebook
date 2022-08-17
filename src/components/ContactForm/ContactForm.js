@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { ContactFormStyle, LabelForm, InputForm, ButtonForAdd } from "components/ContactForm/ContactForm.styled";
 
 export class ContactForm extends Component {
+    static propTypes = {
+        addNewContact: PropTypes.func.isRequired,
+    };
     state = {
         name: '',
         number: '',
@@ -56,8 +59,4 @@ export class ContactForm extends Component {
             </ContactFormStyle>
         );
     };
-};
-
-ContactForm.propTypes = {
-    addNewContact: PropTypes.func.isRequired,
 };

@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import { ContactListStyle, ContactItem, ButtonForDelete } from "components/ContactList/ContactList.styled";
+import { ContactItemEntrails } from 'components/ContactList/ContactListItem';
+import { ContactListStyle, ContactItem } from "components/ContactList/ContactList.styled";
 
-export const ContactList = ({ doFiltering, deleteContact }) => {
-    const visibleContacts = doFiltering();
+export const ContactList = ({ visibleContacts, deleteContact }) => {
     return (
         <ContactListStyle>
             {visibleContacts.map(({id, name, number}) => {
                 return (
-                    <ContactItem key={id}>{name}: {number}
-                        <ButtonForDelete type="button" onClick={() => {deleteContact(id)}}>Delete</ButtonForDelete>
+                    <ContactItem key={id}>
+                        <ContactItemEntrails id={id} name={name} number={number} deleteContact={deleteContact} />
                     </ContactItem>
                 );
             })}
@@ -17,6 +17,6 @@ export const ContactList = ({ doFiltering, deleteContact }) => {
 };
 
 ContactList.propTypes = {
-    doFiltering: PropTypes.func.isRequired,
+    visibleContacts: PropTypes.array.isRequired,
     deleteContact: PropTypes.func.isRequired,
 };

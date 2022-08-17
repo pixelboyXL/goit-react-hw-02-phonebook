@@ -49,7 +49,7 @@ export class App extends Component {
     return (
       <Box as="section"
         mx="auto"
-        mt="200px"
+        my="200px"
         width="340px"
         p={5}
         bg="maybeYellow"
@@ -68,7 +68,7 @@ export class App extends Component {
             ?
             <>
               <Filter filter={filter} initialiseFilter={this.initialiseFilter} />
-              <ContactList doFiltering={this.doFiltering} deleteContact={this.deleteContact} />
+              <ContactList visibleContacts={this.doFiltering()} deleteContact={this.deleteContact} />
             </>
             :
             <WarningMessage>Looks like you don`t have any contacts yet or just clear them all. Please add new contact.</WarningMessage>}
