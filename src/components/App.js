@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle, MainTitle, ContactsTitle, WarningMessage } from './GlobalStyles';
 import { Box } from 'components/Box';
 import { ContactForm } from "components/ContactForm/ContactForm";
@@ -24,9 +26,9 @@ export class App extends Component {
       name,
       number,
     };
-    this.setState(prevState => (
-      checkContact ? alert(`${name} is already in contacts`) : { contacts: [newContact, ...prevState.contacts],}
-    ));
+    return checkContact 
+      ? toast.warn(`${name} is already in contacts`, { theme: "colored", })
+      : this.setState(prevState => ({ contacts: [newContact, ...prevState.contacts], }));
   };
   initialiseFilter = (event) => {
     const { name, value } = event.currentTarget;
@@ -74,6 +76,7 @@ export class App extends Component {
             <WarningMessage>Looks like you don`t have any contacts yet or just clear them all. Please add new contact.</WarningMessage>}
         </Box>
         <GlobalStyle />
+        <ToastContainer autoClose={3000}/>
       </Box>
     );
   };
