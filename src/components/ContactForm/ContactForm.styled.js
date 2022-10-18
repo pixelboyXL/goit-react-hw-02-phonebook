@@ -34,10 +34,10 @@ export const ButtonForAdd = styled.button`
     cursor: pointer;
     color: ${p => p.theme.colors.maybeYellow};
     background-color: ${p => p.theme.colors.almostDarkGreen};
-    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: ${p => p.theme.transition.cubicBezier};
     &:hover,
     &:focus {
-        transform: scale(1.15);
+        transform: ${p => p.theme.transform.scaleThird};
         color: ${p => p.theme.colors.almostDarkGreen};
         background-color: ${p => p.theme.colors.maybeYellow};
     }
